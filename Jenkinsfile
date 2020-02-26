@@ -6,8 +6,8 @@ pipeline {
         stage('Build') {
             steps {
                 dir('build') {
-                  cmake -DCMAKE_BUILD_TYPE=Debug ..
-                  cmake --build .
+                  sh "cmake -DCMAKE_BUILD_TYPE=Debug .."
+                  sh "cmake --build ."
                 }
             }
         }
