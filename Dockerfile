@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
     clang \
+    libc6-compat \
     ca-certificates
 
 ENV \
