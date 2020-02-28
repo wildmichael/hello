@@ -6,6 +6,7 @@ RUN apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     git \
     build-essential \
+    catch2 \
     cmake \
     clang \
     libc6-compat \
