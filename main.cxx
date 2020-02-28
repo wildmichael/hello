@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv)
 {
-  string name;
+  std::string name;
   if (argc > 1)
   {
     name = argv[1];
