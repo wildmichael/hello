@@ -12,10 +12,11 @@ target_link_libraries(${PROJECT_NAME} lib${PROJECT_NAME})
 
 include(CTest)
 
-find_package(Catch2 REQUIRED)
-include(Catch)
+add_subdirectory(catch2)
 
 add_executable(hello_tests hello_tests.cxx)
-target_link_executable(hello_tests libhello Catch2::Catch2)
+target_link_libraries(hello_tests libhello Catch2::Catch2)
+
+include(catch2/contrib/Catch.cmake)
 
 catch_discover_tests(hello_tests)
