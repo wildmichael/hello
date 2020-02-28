@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                ctest installation: 'InSearchPath', arguments: '-T Test', workingDir: 'build'
+                ctest installation: 'InSearchPath', arguments: '-T Test --no-compress-output', workingDir: 'build'
             }
         }
     }
