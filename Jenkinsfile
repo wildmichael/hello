@@ -5,21 +5,27 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                cmake 'InSearchPath'
-                cmakeBuild buildType: 'Debug', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
+                cmakeBuild {
+                    buildType: 'Debug'
+                    cleanBuild: true
+                    installation: 'InSearchPath'
+                    steps: [[withCmake: true]]
+                }
             }
         }
         stage('Test') {
             steps {
-                dir('build') {
-                    sh './hello_tests --reporter junit -o results.xml'
+                ctest {
+                    installation: 'InSearchPath'
+                    arguments: '-T Test'
+                    workingDir: 'build'
                 }
             }
         }
     }
     post {
         always {
-            junit 'build/results.xml'
+            junit 'build/Testing/**/Test.xml'
         }
     }
 }
