@@ -11,8 +11,15 @@ pipeline {
         }
         stage('Test') {
             steps {
-                ctest 'InSearchPath'
+                dir('build') {
+                    sh './hello_tests --reporter junit -o results.xml'
+                }
             }
+        }
+    }
+    post {
+        always {
+            junit 'build/results.xml'
         }
     }
 }
