@@ -1,8 +1,6 @@
-#include <iostream>
+#include "hello.hh"
 
-int main()
+std::string hello::greeting(std::string const& name)
 {
-  std::cout << "Hello, World!\n";
-  
-  return 0;
+  return "Hello, " + name + "!";
 }
