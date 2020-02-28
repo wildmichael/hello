@@ -5,17 +5,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir('build') {
-                  sh "cmake -DCMAKE_BUILD_TYPE=Debug .."
-                  sh "cmake --build ."
-                }
+                cmake
+                cmakeBuild buildType: 'Debug', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
             }
         }
         stage('Test') {
             steps {
-                dir('build') {
-                  sh "ctest"
-                }
+                ctest 'InSearchPath'
             }
         }
     }
