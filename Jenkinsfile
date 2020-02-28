@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                cmake
+                cmake 'InSearchPath'
                 cmakeBuild buildType: 'Debug', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
             }
         }
