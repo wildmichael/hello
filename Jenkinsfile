@@ -11,5 +11,12 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                dir('build') {
+                  sh "ctest"
+                }
+            }
+        }
     }
 }
